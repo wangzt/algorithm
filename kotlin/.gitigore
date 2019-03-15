@@ -69,4 +69,3 @@ tools/dynamic_file_android_*.txt
 *.settings
 .eslintrc.json
 .vscode/
-
