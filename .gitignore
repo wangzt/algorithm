@@ -16,7 +16,6 @@ out/
 # Gradle files
 .gradle/
 build/
-kotlin/build/
 
 # Local configuration file (sdk path, etc)
 local.properties
@@ -70,3 +69,15 @@ tools/dynamic_file_android_*.txt
 *.settings
 .eslintrc.json
 .vscode/
+
+public-emit.txt
+
+outapk/
+tiny.properties
+
+# parselog
+*.pyc
+parselog/log*
+
+tools/analyze/apk/output*
+votedemo/screenshots/*
