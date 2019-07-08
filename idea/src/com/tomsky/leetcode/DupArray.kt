@@ -17,11 +17,14 @@ class DupArray {
 //            print("${input[i]} ")
 //        }
 
-        var input = intArrayOf(1,2,3)
-        nextPermutation(input)
-        for (i in 0 until input.size) {
-            print("${input[i]} ")
-        }
+//        var input = intArrayOf(1,2,3)
+//        nextPermutation(input)
+//        for (i in 0 until input.size) {
+//            print("${input[i]} ")
+//        }
+
+        var input = intArrayOf(4,5,6,7,0,1,2)
+        print(search(input, 3))
     }
 
     fun removeDuplicates(nums: IntArray): Int {
@@ -95,4 +98,28 @@ class DupArray {
             j--
         }
     }
+
+    fun search(nums: IntArray, target: Int): Int {
+        var size = nums.size
+        if (nums[0] <= target) {
+            for (i in 0..size) {
+                if (nums[i] == target) {
+                    return i
+                }
+            }
+        } else {
+            for (i in size-1 downTo 0) {
+                if (nums[i] == target) {
+                    return i
+                }
+            }
+        }
+
+        return -1
+    }
+
+    473573972e8047e3df70352487e2746b309796f0
+
+    2d74a5e9d5a22b20b02051ba49643c4f0242a460
+
 }
