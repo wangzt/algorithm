@@ -23,8 +23,15 @@ class DupArray {
 //            print("${input[i]} ")
 //        }
 
-        var input = intArrayOf(4,5,6,7,0,1,2)
-        print(search(input, 3))
+//        var input = intArrayOf(4,5,6,7,0,1,2)
+//        print(search(input, 3))
+
+        var nums = intArrayOf(5,7,7,8,8,10)
+//        var nums = intArrayOf(2,2)
+//        var nums = intArrayOf(1,3)
+//        var nums = intArrayOf(1,2,3)
+        var result = searchRange(nums, 6)
+        print("[${result[0]}, ${result[1]}]")
     }
 
     fun removeDuplicates(nums: IntArray): Int {
@@ -117,5 +124,73 @@ class DupArray {
 
         return -1
     }
-    
+
+
+    fun searchRange(nums: IntArray, target: Int): IntArray {
+        var size = nums.size
+        if (size == 0) return intArrayOf(-1, -1)
+
+//        var find = binarySearch(nums, target, 0, size/2, size - 1)
+        var find = binarySearch(nums, target)
+        if (find == -1) {
+            return intArrayOf(-1, -1)
+        } else {
+            var result = IntArray(2)
+            result[0] = find
+            result[1] = find
+
+            for(i in find -1 downTo 0) {
+                if (nums[i] < target) {
+                    break
+                } else if (nums[i] == target) {
+                    result[0] = i
+                }
+            }
+            for (j in find+1 until size) {
+                if (nums[j] > target) {
+                    break
+                } else if (nums[j] == target) {
+                    result[1] = j
+                }
+            }
+            return result
+        }
+
+    }
+
+    private fun binarySearch(nums: IntArray, target: Int, left:Int, center:Int, right:Int):Int {
+        if (center < 0 || center > nums.size - 1) return -1
+
+        if (target == nums[center]) return center
+
+        if (left >= right) return -1
+
+        if (target > nums[center]) {
+            return binarySearch(nums, target, center+1, (right + center) / 2, right)
+        } else if (target < nums[center]) {
+            return binarySearch(nums, target, left, center/2, center-1)
+        } else {
+            return center
+        }
+    }
+
+    private fun binarySearch(nums: IntArray, target: Int):Int {
+        var left = 0
+        var right = nums.size - 1
+        var center = (left+right)/2
+
+        while (left <= right) {
+            if (nums[center] > target) {
+                right = center - 1
+                center = (left+right)/2
+            } else if (nums[center] < target){
+                left = center + 1
+                center = (left+right)/2
+            } else {
+                return center
+            }
+        }
+
+        return -1
+    }
 }
