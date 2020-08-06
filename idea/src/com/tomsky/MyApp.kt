@@ -4,7 +4,7 @@ import com.tomsky.leetcode.DupArray
 import com.tomsky.leetcode.Sum4
 import com.tomsky.linkedlist.LRUCache
 
-fun main(args: Array<String>) {
+fun main(args: Array<int>) {
 //    println("Hello kotlin")
 //    var cache = LRUCache()
 //    cache.input()
